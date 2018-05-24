@@ -22256,8 +22256,23 @@ var Canvas = function (_Component) {
         if (bagel.selected) {
           var touchX = e.touches[0].pageX;
           var touchY = e.touches[0].pageY;
-          bagel.x = touchX - bagel.offsetX;
-          bagel.y = touchY - bagel.offsetY;
+          var moveX = touchX - bagel.offsetX;
+          var moveY = touchY - bagel.offsetY;
+          //below stops drag from moving outside the window
+          if (moveX <= -buffer) {
+            bagel.x = -buffer;
+          } else if (moveX > canvas.width - bagel.size + buffer) {
+            bagel.x = canvas.width - bagel.size + buffer;
+          } else {
+            bagel.x = moveX;
+          }
+          if (moveY <= -buffer) {
+            bagel.y = -buffer;
+          } else if (moveY > canvas.height + buffer) {
+            bagel.y = canvas.height + buffer;
+          } else {
+            bagel.y = moveY;
+          }
         }
       };
       canvas.addEventListener('touchstart', handleTouchStart);

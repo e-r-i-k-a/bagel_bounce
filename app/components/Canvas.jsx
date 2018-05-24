@@ -88,8 +88,23 @@ export default class Canvas extends Component {
       if (bagel.selected) {
         let touchX = e.touches[0].pageX;
         let touchY = e.touches[0].pageY;
-        bagel.x = touchX - bagel.offsetX;
-        bagel.y = touchY - bagel.offsetY;
+        let moveX = touchX - bagel.offsetX;
+        let moveY = touchY - bagel.offsetY;
+        //below stops drag from moving outside the window
+        if (moveX <= -buffer) {
+          bagel.x = -buffer
+        } else if (moveX > canvas.width - bagel.size + buffer) {
+          bagel.x = canvas.width - bagel.size + buffer
+        } else {
+          bagel.x = moveX
+        }
+        if (moveY <= -buffer) {
+          bagel.y = -buffer
+        } else if (moveY > canvas.height + buffer) {
+          bagel.y = canvas.height + buffer;
+        } else {
+          bagel.y = moveY;
+        }
       }
     };
     canvas.addEventListener('touchstart', handleTouchStart);
