@@ -16,7 +16,6 @@ export default class Canvas extends Component {
     canvas.height = window.innerHeight;
     let bagel = {
       selected: false,
-      drag: false,
       size: 250,
       radius: 125,
       x: (canvas.width / 2) - 125,
@@ -24,6 +23,8 @@ export default class Canvas extends Component {
       dx: 2,
       dy: -2,
       vy: 1,
+      offsetX: null,
+      offsetY: null,
       draw: function () {
         let img = new Image();
         img.src = '/images/bagel.png'
@@ -33,7 +34,7 @@ export default class Canvas extends Component {
     function update() {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       bagel.draw();
-      if (!bagel.selected){
+      if (!bagel.selected) {
         bagel.x += bagel.dx
         bagel.y += bagel.vy;
         bagel.vy += gravity;
@@ -56,17 +57,18 @@ export default class Canvas extends Component {
           //if it hits either side, reverse
           bagel.dx = -bagel.dx;
         }
-
       }
     };
     //event listeners
     function handleTouchStart(e) {
       e.preventDefault();
-      if (e && e.touches.length === 1) {
+      if (e.touches.length === 1) {
         let touchX = e.touches[0].pageX;
         let touchY = e.touches[0].pageY;
         let x1 = bagel.x + bagel.size;
         let y1 = bagel.y + bagel.size;
+        bagel.offsetX = touchX - bagel.x;
+        bagel.offsetY = touchY - bagel.y;
         if (touchX > bagel.x && touchX < x1 && touchY > bagel.y && touchY < y1) {
           //if bagel is touched, mark as selected
           bagel.selected = true;
@@ -77,26 +79,22 @@ export default class Canvas extends Component {
       e.preventDefault();
       if (bagel.selected) {
           bagel.selected = false,
-          bagel.drag = false
+          bagel.offsetX = null,
+          bagel.offsetY = null
       }
     };
     function handleTouchMove(e) {
       e.preventDefault();
       if (bagel.selected) {
-        bagel.drag = true;
         let touchX = e.touches[0].pageX;
         let touchY = e.touches[0].pageY;
-        bagel.x = touchX - bagel.radius;
-        bagel.y = touchY - bagel.radius;
+        bagel.x = touchX - bagel.offsetX;
+        bagel.y = touchY - bagel.offsetY;
       }
     };
-    canvas.addEventListener('touchstart', (e) => {
-      handleTouchStart(e, bagel.x, bagel.y, bagel.size)
-    });
-    canvas.addEventListener('touchmove', (e) => {
-      handleTouchMove(e)
-    });
+    canvas.addEventListener('touchstart', handleTouchStart);
     canvas.addEventListener('touchend', handleTouchEnd);
+    canvas.addEventListener('touchmove', handleTouchMove);
 
     //run update function continuously
     setInterval(update, 1000 / 60);
