@@ -21,8 +21,7 @@ export default class Canvas extends Component {
       x: (canvas.width / 2) - 125,
       y: (canvas.height / 2) - 125,
       dx: 2,
-      dy: -2,
-      vy: 1,
+      dy: 1,
       offsetX: null,
       offsetY: null,
       draw: function () {
@@ -36,17 +35,16 @@ export default class Canvas extends Component {
       bagel.draw();
       if (!bagel.selected) {
         bagel.x += bagel.dx
-        bagel.y += bagel.vy;
-        bagel.vy += gravity;
+        bagel.y += bagel.dy
+        bagel.dy += gravity;
         if (bagel.y + bagel.size > canvas.height + buffer) {
           //if it hits the floor, bounce
           bagel.y = (canvas.height + buffer) - bagel.size;
-          bagel.vy *= -bounce;
-          if (Math.abs(bagel.vy) < .8) {
+          bagel.dy *= -bounce;
+          if (Math.abs(bagel.dy) < .8) {
             //if it also has low velocity, slow to stop
             bagel.dx *= bounce;
-            bagel.dy *= bounce;
-            bagel.vy = 0;
+            bagel.dy = 0;
           }
         }
         if (bagel.y + bagel.dy <= -buffer) {
@@ -100,8 +98,8 @@ export default class Canvas extends Component {
         }
         if (moveY <= -buffer) {
           bagel.y = -buffer
-        } else if (moveY > canvas.height + buffer) {
-          bagel.y = canvas.height + buffer;
+        } else if (moveY + bagel.size > canvas.height + buffer) {
+          bagel.y = canvas.height - bagel.size + buffer;
         } else {
           bagel.y = moveY;
         }
