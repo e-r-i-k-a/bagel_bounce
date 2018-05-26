@@ -1,10 +1,6 @@
 import React, { Component } from 'react';
 
 export default class Canvas extends Component {
-  constructor(props) {
-    super(props)
-    this.state = {};
-  }
 
   componentDidMount() {
     const canvas = document.getElementById('canvas');
@@ -17,7 +13,6 @@ export default class Canvas extends Component {
     let bagel = {
       selected: false,
       size: 250,
-      radius: 125,
       x: (canvas.width / 2) - 125,
       y: (canvas.height / 2) - 125,
       dx: 2,
@@ -57,6 +52,7 @@ export default class Canvas extends Component {
         }
       }
     };
+
     //event listeners
     function handleTouchStart(e) {
       e.preventDefault();
@@ -65,6 +61,7 @@ export default class Canvas extends Component {
         let touchY = e.touches[0].pageY;
         let x1 = bagel.x + bagel.size;
         let y1 = bagel.y + bagel.size;
+        //offset = how far into the bagel object was touched
         bagel.offsetX = touchX - bagel.x;
         bagel.offsetY = touchY - bagel.y;
         if (touchX > bagel.x && touchX < x1 && touchY > bagel.y && touchY < y1) {
@@ -76,9 +73,9 @@ export default class Canvas extends Component {
     function handleTouchEnd(e) {
       e.preventDefault();
       if (bagel.selected) {
-          bagel.selected = false,
-          bagel.offsetX = null,
-          bagel.offsetY = null
+        bagel.selected = false,
+        bagel.offsetX = null,
+        bagel.offsetY = null
       }
     };
     function handleTouchMove(e) {
@@ -105,6 +102,7 @@ export default class Canvas extends Component {
         }
       }
     };
+
     canvas.addEventListener('touchstart', handleTouchStart);
     canvas.addEventListener('touchend', handleTouchEnd);
     canvas.addEventListener('touchmove', handleTouchMove);

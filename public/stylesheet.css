@@ -1,227 +1,31 @@
-/* @import url(http://fonts.googleapis.com/css?family=Droid+Sans+Mono);
-html {
-  height: 100%;
+body {
+  margin: 0;
 }
-*/
-
 canvas {
-    margin: 0;
-    height: 100%;
-    width: 100%;
-    background: #eee;
+  position: relative;
+  z-index: -1;
+  background-image: url("/images/cream_cheese.jpg");
+  background-size: 33.333333333333336vw 20vh;
 }
-
-/* body {
-	margin: 0;
-	padding: 0;
-	font-size: 12px;
-	overflow: hidden;
-	-webkit-animation: pulse 60s infinite alternate;
-	-moz-animation: pulse 60s infinite alternate;
-	-ms-animation: pulse 60s infinite alternate;
-	-animation: pulse 60s infinite alternate;
-	height: 100%;
-} */
-
-/*
-#screen {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-	background: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pgo8c3ZnIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDEgMSIgcHJlc2VydmVBc3BlY3RSYXRpbz0ibm9uZSI+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJncmFkLXVjZ2ctZ2VuZXJhdGVkIiBncmFkaWVudFVuaXRzPSJ1c2VyU3BhY2VPblVzZSIgeDE9IjAlIiB5MT0iMCUiIHgyPSIwJSIgeTI9IjEwMCUiPgogICAgPHN0b3Agb2Zmc2V0PSIwJSIgc3RvcC1jb2xvcj0iI2ZmZmZmZiIgc3RvcC1vcGFjaXR5PSIwIi8+CiAgICA8c3RvcCBvZmZzZXQ9IjEwMCUiIHN0b3AtY29sb3I9IiNmZmZmZmYiIHN0b3Atb3BhY2l0eT0iMSIvPgogIDwvbGluZWFyR3JhZGllbnQ+CiAgPHJlY3QgeD0iMCIgeT0iMCIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0idXJsKCNncmFkLXVjZ2ctZ2VuZXJhdGVkKSIgLz4KPC9zdmc+);
-	background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 100%);
-	background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(100%,rgba(255,255,255,1)));
-	background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
-	background: -o-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
-	background: -ms-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
-	background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 100%);
-	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 );
+#menu,
+#menu-img {
+  height: 75px;
+  width: 75px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background-size: 100% 100%;
 }
-
-.btn { cursor: pointer; }
-
-img { border: 0; }
-
-.mb {
-	max-width: 10%;
-	height: auto;
+#menu {
+  background-image: url("/images/tomato.jpg");
 }
-
-.mc {
-	max-width: 10%;
-	height: auto;
+#menu-img {
+  width: 55px;
+  height: 55px;
+  padding: 10px 10px;
 }
-
-.infodisplay {
-    display: none;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    position: fixed;
-    background-color: #ffc5bc;
-    z-index: 5000
+@media only screen and (min-width: 481px) {
+  canvas {
+    background-size: 225px 225px;
+  }
 }
-
-.infocontainer {
-    top: 50%;
-    left: 50%;
-    display: block;
-    position: absolute;
-    width: 850px;
-    height: 500px;
-    margin-top: -175px;
-    margin-left: -425px;
-    text-align: center;
-    animation: fadein 2s;
-    -moz-animation: fadein 2s;
-    -webkit-animation: fadein 2s;
-    -o-animation: fadein 2s
-}
-
-.infobutton a {
-    font-family: Helvetica, Arial, sans-serif;
-    color: #000;
-    top: 30px;
-    left: 20px;
-    position: fixed;
-	 z-index: 4999;
-    animation: fadein 2s;
-    -moz-animation: fadein 2s;
-    -webkit-animation: fadein 2s;
-    -o-animation: fadein 2s;
-}
-
-.infobutton a:hover {
-    z-index: 4999;
-    cursor: pointer;
-}
-
-.infobuttonclose a {
-    font-family: Helvetica, Arial, sans-serif;
-    color: #000;
-    top: 30px;
-    left: 20px;
-    position: fixed;
-    z-index: 5001;
-    animation: fadein 2s;
-    -moz-animation: fadein 2s;
-    -webkit-animation: fadein 2s;
-    -o-animation: fadein 2s;
-}
-
-.infobuttonclose a:hover {
-    text-decoration: none;
-    cursor: pointer
-}
-
-#social {
-   -webkit-transform: scale(2.0);
-   -moz-transform: scale(2.0);
-   -ms-transform: scale(2.0);
-    transform: scale(2.0);
-	padding: 45px 0px 0px 0px;
-}
-
-.infoz {
-	font-family: 'Droid Sans Mono', 'Andale Mono', 'AndaleMono', 'Lucida Console', Arial, monospace;
-    color: #000;
-	font-size: 2em;
-}
-
-.linkz {
-	padding: 15px 0px 0px 0px;
-	font-family: 'Droid Sans Mono', 'Andale Mono', 'AndaleMono', 'Lucida Console', Arial, monospace;
-	color: #000;
-	font-size: 2em;
-	text-decoration: none;
-}
-
-.linkz a:link {
-	text-decoration: none;
-	color: #000;
-	border-bottom: 1px solid #000;
-}
-
-.linkz a:visited {
-	text-decoration: none;
-	color: #000;
-	border-bottom: 1px solid #000;
-}
-
-.linkz a:active {
-	text-decoration: none;
-	color: #000;
-	border-bottom: 1px solid #000;
-}
-
-.linkz a:hover {
-	text-decoration: none;
-	color: #000;
-	border-bottom: none;
-}
-.finger {
-	-webkit-transform: scale(1.2);
-   -moz-transform: scale(1.2);
-   -ms-transform: scale(1.2);
-    transform: scale(1.2);
-	vertical-align: bottom;
-	margin-bottom: 0px;
-	margin-left: 8px;
-}
-
-p { margin: 10px 0px 10px 0px; }
-
-.twitter-share-button {
-	padding: 0px 0px 0px 3px;
-	vertical-align: middle;
-	width: 70px;
-}
-
-.italic {
-	font-style: italic;
-	font-size: 3.5em;
-	letter-spacing:0.1em;
-	font-family:"Times New Roman", Times, serif;
-	font-weight:bold;
-	text-shadow: 2px 2px 0px rgba(255,255,255,1);
-	margin-bottom: 15px;
-} */
-
-/*Animation Prefs*/
-/* @-webkit-keyframes pulse {
-0% {background-color: #89daff;}
-20% {background-color: #23f9f5;}
-40% {background-color: #fffc00;}
-60% {background-color: #ff2cc2;}
-80% {background-color: #cbb1ff;}
-100% {background-color: #89daff;}
-}
-
-@-moz-keyframes pulse {
-0% {background-color: #89daff;}
-20% {background-color: #23f9f5;}
-40% {background-color: #fffc00;}
-60% {background-color: #ff2cc2;}
-80% {background-color: #cbb1ff;}
-100% {background-color: #89daff;}
-}
-
-@-ms-keyframes pulse {
-0% {background-color: #89daff;}
-20% {background-color: #23f9f5;}
-40% {background-color: #fffc00;}
-60% {background-color: #ff2cc2;}
-80% {background-color: #cbb1ff;}
-100% {background-color: #89daff;}
-}
-
-@keyframes pulse {
-0% {background-color: #89daff;}
-20% {background-color: #23f9f5;}
-40% {background-color: #fffc00;}
-60% {background-color: #ff2cc2;}
-80% {background-color: #cbb1ff;}
-100% {background-color: #89daff;}
-} */

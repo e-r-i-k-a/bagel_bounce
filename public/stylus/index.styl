@@ -1,73 +1,29 @@
 //to watch and compile, run: 'stylus -w public/stylus/index.styl -o public/stylesheet.css'
 
-// @import 'public/stylus/variables'
+// devices
+notPhone = 'only screen and (min-width: 481px)'
 
-// body
-//   min-width 320px
-//   // width 100%
-//   overflow hidden
-// //show
-// .main-selectedShow
-//   verticalCenter()
-//   padding 0px 0px 50px
-//   font-family 'Oswald'
-//   font-weight bold
-// .main-selectedShow-img
-//   height thumbnail*5
-//   padding-top 25%
-// .main-selectedShow-episodeCount
-//   color grey
-//   font-size title/3
-// .main-selectedShow-title
-//   font-size title
-// //slider
-// .slider
-//   display flex
-//   overflow scroll
-//   overflow-y hidden
-//   width 100%
-//   font-family 'Oswald'
-//   justify-content space-between
-// figure
-//   margin 0px
-//   position relative
-// figcaption
-//   display flex
-//   justify-content center
-// .slider-thumbnail, .slider-shadow
-//   width thumbnail
-//   height thumbnail
-//   margin 20px 20px 10px
-// .slider-thumbnail
-//   object-fit cover
-//   object-position top
-// .slider-shadow
-//   background rgba(0,0,0,0.6)
-//   position absolute
-//   top 0
+body
+  margin 0
+canvas
+  position relative
+  z-index -1
+  background-image url('/images/cream_cheese.jpg')
+  background-size (100/3)vw (100/5)vh
+#menu, #menu-img
+  height 75px
+  width 75px
+  position fixed
+  top 0
+  left 0
+  background-size 100% 100%
+#menu
+  background-image url('/images/tomato.jpg')
+#menu-img
+  width 55px
+  height 55px
+  padding 10px 10px
 
-// @media desktop
-//   main
-//     verticalCenter()
-//     width 100%
-//   hr
-//     order 1
-//   .main-selectedShow
-//     order 2
-//   .main-selectedShow-img
-//     height thumbnail*8
-//     padding-top 5%
-//   .main-selectedShow-episodeCount
-//     font-size title
-//   .main-selectedShow-title
-//     font-size title*2
-//   .slider-thumbnail, .slider-shadow
-//     height thumbnail*2
-//     width thumbnail*2
-//   .slider-shadow:hover
-//     background rgba(0,0,0,0)
-
-// @media extraLarge
-//   body
-//     width 980px
-//     margin auto
+@media notPhone
+  canvas
+    background-size 225px 225px
