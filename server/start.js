@@ -2,7 +2,6 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const { resolve } = require('path')
 const app = express()
-const PORT = 9001
 
 module.exports = app
   .use(bodyParser.urlencoded({ extended: true }))
@@ -13,5 +12,5 @@ module.exports = app
 if (module === require.main) {
   // Start listening only if we're the main module.
   //When a file is run directly from Node.js, require.main is set to its module
-  app.listen(PORT, () => console.log(`server listening on port ${PORT}`))
+  app.listen(process.env.PORT || 9001, () => console.log('server listening'))
 }
