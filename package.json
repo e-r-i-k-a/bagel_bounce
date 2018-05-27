@@ -2,7 +2,7 @@
   "name": "bagel-bounce",
   "version": "1.0.0",
   "scripts": {
-    "start-dev": "webpack -w & nodemon server/start.js",
+    "dev": "webpack -w & nodemon server/start.js",
     "start": "node server/start.js"
   },
   "dependencies": {

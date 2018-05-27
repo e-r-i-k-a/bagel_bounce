@@ -20,9 +20,7 @@ export default class Canvas extends Component {
       offsetX: null,
       offsetY: null,
       draw: function () {
-        let img = new Image();
-        img.src = '/images/bagel.png'
-        ctx.drawImage(img, this.x, this.y, this.size, this.size)
+        ctx.drawImage('/images/bagel.png', this.x, this.y, this.size, this.size)
       }
     };
     function update() {
