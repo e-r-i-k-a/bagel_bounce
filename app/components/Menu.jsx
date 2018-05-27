@@ -25,7 +25,7 @@ export default class Menu extends Component {
       return (
         <div id='menu-closed-logo'
           onClick={e => this.handleExpand(e)}>
-          <img id='menu-closed-img-logo' src='/images/menu.png'></img>
+          <img id='menu-closed-logo-img' src='/images/menu.png'></img>
         </div>
       )
     } else {
@@ -33,14 +33,14 @@ export default class Menu extends Component {
         <div id='menu-open'>
           <div id='menu-open-logo'
             onClick={e => this.handleCollapse(e)}>
-            <img id='menu-open-img-logo' src='/images/close.png'></img>
+            <img id='menu-open-logo-img' src='/images/close.png'></img>
           </div>
           <div id='info'>
             <h1>BAGEL BOUNCE!</h1>
             <div id='info-detail'>
               <p> Use your </p>
               <img id='info-detail-img' src='/images/finger.gif'></img>
-              <p> to drag and bounce the</p>
+              <p> to drag and bounce the bagel!</p>
             </div>
           </div>
         </div>

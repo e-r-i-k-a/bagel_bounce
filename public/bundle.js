@@ -22361,7 +22361,7 @@ var Menu = function (_Component) {
             onClick: function onClick(e) {
               return _this2.handleExpand(e);
             } },
-          _react2.default.createElement('img', { id: 'menu-closed-img-logo', src: '/images/menu.png' })
+          _react2.default.createElement('img', { id: 'menu-closed-logo-img', src: '/images/menu.png' })
         );
       } else {
         return _react2.default.createElement(
@@ -22373,7 +22373,7 @@ var Menu = function (_Component) {
               onClick: function onClick(e) {
                 return _this2.handleCollapse(e);
               } },
-            _react2.default.createElement('img', { id: 'menu-open-img-logo', src: '/images/close.png' })
+            _react2.default.createElement('img', { id: 'menu-open-logo-img', src: '/images/close.png' })
           ),
           _react2.default.createElement(
             'div',
@@ -22395,7 +22395,7 @@ var Menu = function (_Component) {
               _react2.default.createElement(
                 'p',
                 null,
-                ' to drag and bounce the'
+                ' to drag and bounce the bagel!'
               )
             )
           )
