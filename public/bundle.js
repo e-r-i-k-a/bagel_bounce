@@ -22307,24 +22307,105 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _react = __webpack_require__(32);
 
 var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Menu = function Menu(props) {
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
-  return _react2.default.createElement(
-    'div',
-    null,
-    _react2.default.createElement(
-      'div',
-      { id: 'menu' },
-      _react2.default.createElement('img', { id: 'menu-img', src: '/images/menu.png' })
-    )
-  );
-};
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Menu = function (_Component) {
+  _inherits(Menu, _Component);
+
+  function Menu(props) {
+    _classCallCheck(this, Menu);
+
+    var _this = _possibleConstructorReturn(this, (Menu.__proto__ || Object.getPrototypeOf(Menu)).call(this, props));
+
+    _this.state = {
+      selected: false
+    };
+    _this.handleExpand = _this.handleExpand.bind(_this);
+    _this.handleCollapse = _this.handleCollapse.bind(_this);
+    return _this;
+  }
+
+  _createClass(Menu, [{
+    key: 'handleExpand',
+    value: function handleExpand(e) {
+      e.preventDefault();
+      this.setState({ selected: true });
+    }
+  }, {
+    key: 'handleCollapse',
+    value: function handleCollapse(e) {
+      e.preventDefault();
+      this.setState({ selected: false });
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      if (!this.state.selected) {
+        return _react2.default.createElement(
+          'div',
+          { id: 'menu-closed-logo',
+            onClick: function onClick(e) {
+              return _this2.handleExpand(e);
+            } },
+          _react2.default.createElement('img', { id: 'menu-closed-img-logo', src: '/images/menu.png' })
+        );
+      } else {
+        return _react2.default.createElement(
+          'div',
+          { id: 'menu-open' },
+          _react2.default.createElement(
+            'div',
+            { id: 'menu-open-logo',
+              onClick: function onClick(e) {
+                return _this2.handleCollapse(e);
+              } },
+            _react2.default.createElement('img', { id: 'menu-open-img-logo', src: '/images/close.png' })
+          ),
+          _react2.default.createElement(
+            'div',
+            { id: 'info' },
+            _react2.default.createElement(
+              'h1',
+              null,
+              'BAGEL BOUNCE!'
+            ),
+            _react2.default.createElement(
+              'div',
+              { id: 'info-detail' },
+              _react2.default.createElement(
+                'p',
+                null,
+                ' Use your '
+              ),
+              _react2.default.createElement('img', { id: 'info-detail-img', src: '/images/finger.gif' }),
+              _react2.default.createElement(
+                'p',
+                null,
+                ' to drag and bounce the'
+              )
+            )
+          )
+        );
+      }
+    }
+  }]);
+
+  return Menu;
+}(_react.Component);
 
 exports.default = Menu;
 

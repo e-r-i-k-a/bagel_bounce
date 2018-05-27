@@ -1,14 +1,13 @@
 body {
   margin: 0;
-}
-canvas {
-  position: relative;
-  z-index: -1;
   background-image: url("/images/cream_cheese.jpg");
   background-size: 33.333333333333336vw 20vh;
 }
-#menu,
-#menu-img {
+#menu-closed-logo,
+#menu-closed-img-logo,
+#menu-open-logo,
+#menu-open-img-logo {
+  z-index: 2;
   height: 75px;
   width: 75px;
   position: fixed;
@@ -16,16 +15,129 @@ canvas {
   left: 0;
   background-size: 100% 100%;
 }
-#menu {
+#menu-closed-logo,
+#menu-open-logo {
   background-image: url("/images/tomato.jpg");
 }
-#menu-img {
+#menu-closed-img-logo {
   width: 55px;
   height: 55px;
   padding: 10px 10px;
 }
+#menu-open-img-logo {
+  width: 45px;
+  height: 45px;
+  padding: 15px 15px;
+}
+#info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  -webkit-animation: pulse 10s infinite alternate;
+}
+-moz-animation: pulse 10s infinite alternate {
+  -ms-animation: pulse 10s infinite alternate;
+  -animation: pulse 10s infinite alternate;
+}
+#info-detail {
+  display: flex;
+  flex-direction: row;
+}
+#info-detail-img {
+  display: flex;
+  align-self: center;
+  height: 25px;
+  width: 25px;
+}
 @media only screen and (min-width: 481px) {
   canvas {
     background-size: 225px 225px;
+  }
+}
+@-moz-keyframes pulse {
+  0% {
+    background-color: #89daff;
+  }
+  20% {
+    background-color: #23f9f5;
+  }
+  40% {
+    background-color: #fffc00;
+  }
+  60% {
+    background-color: #ff2cc2;
+  }
+  80% {
+    background-color: #cbb1ff;
+  }
+  100% {
+    background-color: #89daff;
+  }
+}
+@-webkit-keyframes pulse {
+  0% {
+    background-color: #89daff;
+  }
+  20% {
+    background-color: #23f9f5;
+  }
+  40% {
+    background-color: #fffc00;
+  }
+  60% {
+    background-color: #ff2cc2;
+  }
+  80% {
+    background-color: #cbb1ff;
+  }
+  100% {
+    background-color: #89daff;
+  }
+}
+@-o-keyframes pulse {
+  0% {
+    background-color: #89daff;
+  }
+  20% {
+    background-color: #23f9f5;
+  }
+  40% {
+    background-color: #fffc00;
+  }
+  60% {
+    background-color: #ff2cc2;
+  }
+  80% {
+    background-color: #cbb1ff;
+  }
+  100% {
+    background-color: #89daff;
+  }
+}
+@keyframes pulse {
+  0% {
+    background-color: #89daff;
+  }
+  20% {
+    background-color: #23f9f5;
+  }
+  40% {
+    background-color: #fffc00;
+  }
+  60% {
+    background-color: #ff2cc2;
+  }
+  80% {
+    background-color: #cbb1ff;
+  }
+  100% {
+    background-color: #89daff;
   }
 }
