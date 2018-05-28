@@ -29,6 +29,7 @@ export default class Canvas extends Component {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       bagel.draw();
       if (!bagel.selected) {
+        console.log(bagel.dx)
         bagel.x += bagel.dx
         bagel.y += bagel.dy
         bagel.dy += gravity;
@@ -38,7 +39,7 @@ export default class Canvas extends Component {
           bagel.dy *= -bounce;
           if (Math.abs(bagel.dy) < .8) {
             //if it also has low velocity, slow to stop
-            bagel.dx *= bounce;
+            bagel.dx = 0;
             bagel.dy = 0;
             bagel.gravity = 0;
           }
