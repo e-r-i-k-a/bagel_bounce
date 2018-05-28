@@ -14,7 +14,7 @@ export default class Canvas extends Component {
     img.src = '/images/bagel.png'
     let bagel = {
       selected: false,
-      size: 150,
+      size: (canvas.width < 480) ? 125 : 215,
       x: (canvas.width / 2) - 75,
       y: (canvas.height / 2) - 75,
       dx: 2,
@@ -40,6 +40,7 @@ export default class Canvas extends Component {
             //if it also has low velocity, slow to stop
             bagel.dx *= bounce;
             bagel.dy = 0;
+            bagel.gravity = 0;
           }
         }
         if (bagel.y + bagel.dy <= -buffer) {
@@ -59,7 +60,8 @@ export default class Canvas extends Component {
       let touchX, touchY;
       let x1 = bagel.x + bagel.size;
       let y1 = bagel.y + bagel.size;
-      if (e.touches && e.touches.length === 1) {
+      if (e.touches && e.touches[0]) {
+        //only respond to one finger
         touchX = e.touches[0].pageX;
         touchY = e.touches[0].pageY;
       } else if (type === 'mouse' && e.pageX && e.pageY) {
