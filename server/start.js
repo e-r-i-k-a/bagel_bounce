@@ -12,5 +12,5 @@ module.exports = app
 if (module === require.main) {
   // Start listening only if we're the main module.
   //When a file is run directly from Node.js, require.main is set to its module
-  app.listen(process.env.PORT || 9001, () => console.log('server listening'))
+  app.listen(process.env.PORT || 9001, () => console.log(`server listening on port ${process.env.PORT || 9001}`))
 }
