@@ -22377,19 +22377,23 @@ var Menu = function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      if (!this.state.selected) {
-        return _react2.default.createElement(
+      var selected = this.state.selected;
+      return _react2.default.createElement(
+        'main',
+        null,
+        _react2.default.createElement(
           'div',
           { id: 'menu-closed-logo',
+            style: { display: selected ? 'none' : 'flex' },
             onClick: function onClick(e) {
               return _this2.handleExpand(e);
             } },
           _react2.default.createElement('img', { id: 'menu-closed-logo-icon', src: '/images/menu.png' })
-        );
-      } else {
-        return _react2.default.createElement(
+        ),
+        _react2.default.createElement(
           'div',
-          { id: 'menu-open' },
+          { id: 'menu-open',
+            style: { display: selected ? 'flex' : 'none' } },
           _react2.default.createElement(
             'div',
             { id: 'menu-open-logo',
@@ -22422,8 +22426,8 @@ var Menu = function (_Component) {
               )
             )
           )
-        );
-      }
+        )
+      );
     }
   }]);
 

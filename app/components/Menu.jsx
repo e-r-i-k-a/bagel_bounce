@@ -21,16 +21,16 @@ export default class Menu extends Component {
   }
 
   render() {
-    if (!this.state.selected) {
-      return (
+    let selected = this.state.selected
+    return (
+      <main>
         <div id='menu-closed-logo'
+          style={{ display: selected ? 'none' : 'flex' }}
           onClick={e => this.handleExpand(e)}>
           <img id='menu-closed-logo-icon' src='/images/menu.png'></img>
         </div>
-      )
-    } else {
-      return (
-        <div id='menu-open'>
+        <div id='menu-open'
+          style={{ display: selected ? 'flex' : 'none' }}>
           <div id='menu-open-logo'
             onClick={e => this.handleCollapse(e)}>
             <img id='menu-open-logo-icon' src='/images/close.png'></img>
@@ -44,7 +44,7 @@ export default class Menu extends Component {
             </div>
           </div>
         </div>
-      )
-    }
+      </main>
+    )
   }
 }
