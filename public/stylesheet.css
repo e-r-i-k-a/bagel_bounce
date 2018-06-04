@@ -54,6 +54,11 @@ p {
   height: 25px;
   width: 25px;
 }
+@media screen and (orientation: landscape) {
+  body {
+    background-size: 20vw 25vh;
+  }
+}
 @media only screen and (min-width: 481px) {
   body {
     background-size: 175px 175px;

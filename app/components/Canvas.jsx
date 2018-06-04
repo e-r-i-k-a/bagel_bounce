@@ -26,6 +26,9 @@ export default class Canvas extends Component {
       }
     };
     function update() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      //above accounts for changes in screen orientation
       ctx.clearRect(0, 0, canvas.width, canvas.height)
       bagel.draw();
       if (!bagel.selected) {
