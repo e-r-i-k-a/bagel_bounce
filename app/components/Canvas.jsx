@@ -10,8 +10,8 @@ export default class Canvas extends Component {
     const buffer = 10;
     canvas.width = window.innerWidth;
     canvas.height = window.innerHeight;
-    const img = new Image()
-    img.src = '/images/bagel.png'
+    const img = new Image();
+    img.src = '/images/bagel.png';
     let bagel = {
       selected: false,
       size: (canvas.width < 480) ? 125 : 215,
